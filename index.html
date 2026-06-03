@@ -299,6 +299,24 @@
     line-height: 1.8;
     font-weight: 300;
   }
+
+  .squiggle {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 6px;
+  }
+  .squiggle::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M0 7 C20 3 35 9 55 6 C75 3 90 8 110 5 C130 2 148 9 168 6 C182 4 192 7 200 6' fill='none' stroke='%237c9fff' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
   .divider {
     width: 100%;
     height: 1px;
@@ -892,7 +910,7 @@ const PROCESS = [
     desc: [
       "The first problem customers describe isn’t always the real one.",
       "I’ve found that the most useful conversations happen when you keep asking why. What’s frustrating them? What’s getting in the way? What are they actually trying to accomplish?",
-      "That’s usually where the real opportunity lives.",
+      "I believe that’s usually where the real opportunity lives.",
     ],
   },
   {
@@ -900,7 +918,6 @@ const PROCESS = [
     desc: [
       "Every extra click, decision, or piece of information asks something of the customer.",
       "The goal isn’t simply to make products simpler. The goal is to make it easier for people to accomplish what they came to do.",
-      "Before adding something new, I like asking: “What can we remove?”",
     ],
   },
   {
@@ -923,16 +940,14 @@ const PROCESS = [
     step: "Learn",
     desc: [
       "Some of the most valuable product lessons come from being wrong.",
-      "The best teams I’ve worked with stay curious when the results don’t match the expectation.",
-      "That’s usually where the next insight comes from.",
+      "The best teams I’ve worked with stay curious when the results don’t match the expectation — that’s usually where the next insight comes from.",
     ],
   },
   {
     step: "Repeat",
     desc: [
       "Product work is never really finished.",
-      "Customer expectations change. Technology changes. Behavior changes.",
-      "The job is to keep learning and keep improving. That’s what makes it interesting.",
+      "Customer expectations change. Technology changes. Behavior changes. My approach is to keep learning and improving — that’s what keeps things interesting.",
     ],
   },
 ];
@@ -1046,7 +1061,7 @@ const COMPANIES = [
     role: "Product Leader",
     focus: ["Growth", "Engagement", "Loyalty", "Personalization", "Optimization", "Passkeys"],
     description:
-      "Led product initiatives across rewards, engagement, and security — turning transactional moments into relationship-building experiences for millions of customers worldwide.",
+      "Currently leading a portfolio of growth initiatives centered on loyalty, engagement, and personalization — including a decision engine that determines the right experience for the right customer, a content network that powers personalized surfaces across the product, and an optimization track focused on improving conversion and lifetime value. All of these work together to drive engagement and grow ARPU.",
   },
   {
     name: "Nomad Health",
@@ -1065,6 +1080,15 @@ const COMPANIES = [
 ];
 
 const CASE_STUDIES = [
+  {
+    title: "The First Self-Serve Kiosk — Western Union",
+    challenge:
+      "Retail partners were facing rising labor costs to support in-store money transfer services. The question was whether customers would trust and complete a fully self-serve transaction — end-to-end, no human assistance required.",
+    approach:
+      "Led and built Western Union's first fully self-serve money transfer kiosk, deployed across a national retail grocery chain. The hypothesis: a well-designed self-serve experience could reduce the labor burden on retailers while accelerating the shift from retail-assisted to digital-first behavior.",
+    outcome: "Customers could send money end-to-end with no human intervention. The pilot generated valuable learnings that shaped how we thought about the broader customer experience and the path from physical to digital.",
+    learning: "Sometimes the most important product you build isn't the final destination — it's the one that teaches you and the organization what comes next.",
+  },
   {
     title: "Rewards & Engagement",
     challenge: "Loyalty points felt transactional. Customers earned but didn't engage.",
@@ -1282,10 +1306,10 @@ function ThinkSection() {
     <section id="think">
       <Reveal>
         <span className="section-label">My Approach</span>
-        <h2 className="section-title">How I Think</h2>
+        <h2 className="section-title"><span className="squiggle">How I Think</span></h2>
         <div style={{ maxWidth: 620, marginTop: 20 }}>
           <p style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.85, fontWeight: 300, marginBottom: 20 }}>
-            Everything starts with the customer.
+            I believe everything starts with the customer.
           </p>
           <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85, fontWeight: 300, marginBottom: 20 }}>
             I’ve worked across marketplaces, search and discovery, loyalty, engagement, personalization, and growth.
@@ -1301,7 +1325,7 @@ function ThinkSection() {
             and making it easier for them to get there.
           </p>
           <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85, fontWeight: 300 }}>
-            This is the approach I find myself coming back to again and again.
+            This is the right approach I find myself coming back to again and again.
           </p>
         </div>
       </Reveal>
@@ -1338,7 +1362,7 @@ function MetricsSection() {
       <div className="metrics-inner">
         <Reveal>
           <span className="section-label">Impact</span>
-          <h2 className="section-title">Outcomes Over Outputs</h2>
+          <h2 className="section-title"><span className="squiggle">Outcomes Over Outputs</span></h2>
         </Reveal>
         <div className="metrics-grid">
           {METRICS.map((m, i) => (
@@ -1442,7 +1466,7 @@ function NotebookSection() {
     <section id="notebook">
       <Reveal>
         <span className="section-label">Public Notebook</span>
-        <h2 className="section-title">Product Notebook</h2>
+        <h2 className="section-title"><span className="squiggle">Product Notebook</span></h2>
         <p className="section-desc">Observations, patterns, and product thinking — made public. Tap any entry to read the full note.</p>
       </Reveal>
       <Reveal delay={0.1}>
@@ -1483,7 +1507,7 @@ function WorkSection() {
     <section id="work">
       <Reveal>
         <span className="section-label">Products I've Helped Grow</span>
-        <h2 className="section-title">Where I've Built</h2>
+        <h2 className="section-title"><span className="squiggle">Where I've Built</span></h2>
         <p className="section-desc">Three companies. Three distinct product challenges. One consistent approach.</p>
       </Reveal>
       <div className="companies-list">
@@ -1755,7 +1779,7 @@ function NowSection() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <Reveal>
           <span className="section-label">Now</span>
-          <h2 className="section-title">What I'm Focused On</h2>
+          <h2 className="section-title"><span className="squiggle">What I'm Focused On</span></h2>
           <p className="section-desc">A living snapshot of where my energy and attention are right now.</p>
         </Reveal>
         <div className="now-grid">
@@ -1782,7 +1806,7 @@ function NowSection() {
                 The things I love outside of work aren't separate from my work — they're the lens I bring to it.
               </p>
               <div className="beyond-list">
-                {["Fitness", "Wellness", "Travel", "Music", "DJing", "Entrepreneurship", "Creative Experimentation", "Consumer Behavior"].map((t) => (
+                {["🏋️ Fitness", "🧘 Wellness", "✈️ Travel", "🎵 Music", "🎧 DJing", "💡 Entrepreneurship", "🎨 Creative Experimentation", "🧠 User Psychology", "👟 Shoe Collector", "🧢 Hat Collector", "🤍 Supreme", "👑 Real Housewives (All Cities)", "👗 Fashion"].map((t) => (
                   <span key={t} className="beyond-tag">{t}</span>
                 ))}
               </div>
