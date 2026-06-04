@@ -417,6 +417,7 @@
     40%, 60% { opacity: 0.8; }
   }
 
+  .metrics-section {
     background: var(--bg2);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -1851,8 +1852,18 @@ function WorkSection() {
           <p className="section-desc">Problems, decisions, and what actually happened.</p>
         </div>
       </Reveal>
+      <CasesWithToggle />
+    </section>
+  );
+}
+
+function CasesWithToggle() {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? CASE_STUDIES : CASE_STUDIES.slice(0, 3);
+  return (
+    <>
       <div className="cases-grid">
-        {CASE_STUDIES.slice(0, 3).map((c, i) => (
+        {visible.map((c, i) => (
           <Reveal key={c.title} delay={i * 0.1}>
             <div className="case-card">
               <div className="case-title">{c.title}</div>
@@ -1887,7 +1898,30 @@ function WorkSection() {
           </Reveal>
         ))}
       </div>
-    </section>
+      {CASE_STUDIES.length > 3 && (
+        <div style={{ textAlign: "center", marginTop: 32 }}>
+          <button
+            onClick={() => setShowAll(v => !v)}
+            style={{
+              padding: "10px 28px",
+              border: "1px solid var(--border-bright)",
+              borderRadius: 40,
+              background: "transparent",
+              color: "var(--text2)",
+              fontSize: 13,
+              cursor: "pointer",
+              fontFamily: "var(--sans)",
+              letterSpacing: "0.04em",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.color = "var(--accent)"; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border-bright)"; e.currentTarget.style.color = "var(--text2)"; }}
+          >
+            {showAll ? "Show less" : "See all stories"}
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
