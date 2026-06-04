@@ -785,7 +785,7 @@
   /* Now */
   .now-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 48px;
     margin-top: 32px;
   }
@@ -937,7 +937,7 @@
     .hamburger { display: block; }
     .company-row { grid-template-columns: 1fr; gap: 16px; }
     .company-tags { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-    .now-grid { grid-template-columns: 1fr !important; gap: 24px; }
+
     section { padding: 64px 24px; }
     .metrics-section { padding: 64px 24px; }
     footer { flex-direction: column; gap: 16px; text-align: center; }
@@ -1784,7 +1784,9 @@ function WorkSection() {
                 <div className="company-role">{c.role}</div>
               </div>
               <div className="company-desc">{c.description}</div>
-
+              <div className="company-tags">
+                {c.focus.map((f) => <span key={f} className="company-tag">{f}</span>)}
+              </div>
             </div>
           </Reveal>
         ))}
@@ -2263,13 +2265,7 @@ function NowSection() {
           <div>
             <Reveal delay={0.2}>
               <span className="section-label">Beyond Product</span>
-              <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.5rem", fontWeight: 300, color: "var(--text)", letterSpacing: "-0.01em", marginBottom: 16, marginTop: 8 }}>
-                The whole person behind the product leader.
-              </h3>
-              <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.8, fontWeight: 300, marginBottom: 24 }}>
-                I believe great products come from understanding people, culture, habits, and behavior. 
-                The things I love outside of work aren't separate from my work — they're the lens I bring to it.
-              </p>
+
               <div className="beyond-list">
                 {["🏋️ Fitness", "🧘 Wellness", "✈️ Travel", "🎵 Music", "🎧 DJing", "💡 Entrepreneurship", "🎨 Creative Experimentation", "🧠 User Psychology", "👟 Shoe Collector", "🧢 Hat Collector", "⬜ Supreme", "👑 Real Housewives (All Cities)", "🧥 Fashion"].map((t) => (
                   <span key={t} className="beyond-tag">{t}</span>
