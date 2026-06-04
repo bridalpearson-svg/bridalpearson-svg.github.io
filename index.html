@@ -32,7 +32,7 @@
     --sans: 'DM Sans', system-ui, sans-serif;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     background: var(--bg);
@@ -789,6 +789,9 @@
     gap: 48px;
     margin-top: 32px;
   }
+  @media (min-width: 1024px) {
+    .now-grid { grid-template-columns: 1fr 1fr; }
+  }
   .now-list {
     list-style: none;
     display: flex;
@@ -801,6 +804,7 @@
     align-items: flex-start;
     padding: 14px 0;
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
   }
   .now-icon {
     color: var(--accent);
@@ -813,6 +817,9 @@
     color: var(--text2);
     line-height: 1.6;
     font-weight: 300;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    min-width: 0;
   }
 
   .how-i-lead-block {
@@ -973,7 +980,7 @@ const { useState, useEffect, useRef } = React;
 
 
 // ─── Utility: useInView hook ──────────────────────────────────────────────────
-function useInView(threshold = 0.15) {
+function useInView(threshold = 0.05) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -1013,7 +1020,10 @@ function Reveal({ children, delay = 0, className = "" }) {
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(32px)",
-        transition: `opacity 0.75s ease ${delay}s, transform 0.75s ease ${delay}s`,
+        transition: `opacity 0.45s ease ${delay}s, transform 0.45s ease ${delay}s`,
+        minWidth: 0,
+        boxSizing: "border-box",
+        width: "100%",
       }}
     >
       {children}
@@ -1343,13 +1353,13 @@ const FALLBACK_WRITING = [
 ];
 
 const NOW_ITEMS = [
-  { icon: "◈", text: "Leading growth and engagement initiatives at Western Union" },
-  { icon: "◉", text: "Building and validating FitMatch" },
-  { icon: "◈", text: "Exploring AI-assisted product development" },
-  { icon: "♫", text: "Learning DJing" },
-  { icon: "✦", text: "Writing more consistently about product thinking" },
-  { icon: "◉", text: "Studying personalization, marketplaces, and consumer behavior" },
-  { icon: "◈", text: "Traveling and collecting new experiences" },
+  { icon: "👔", text: "Leading growth and engagement initiatives at Western Union" },
+  { icon: "🏋🏾", text: "Building and validating FitMatch" },
+  { icon: "🤖", text: "Exploring AI-assisted product development" },
+  { icon: "🎧", text: "Learning DJing" },
+  { icon: "✍🏾", text: "Writing more consistently about product thinking" },
+  { icon: "🧠", text: "Studying personalization, marketplaces, and consumer behavior" },
+  { icon: "✈️", text: "Traveling and collecting new experiences" },
 ];
 
 
@@ -2069,9 +2079,9 @@ function WritingSection() {
                   <div className="writing-title">{featured.title}</div>
                   <div className="writing-excerpt">{featured.excerpt}</div>
                   <div className="writing-meta">
-                    <span style={{ color: "var(--accent)", fontSize: 11, letterSpacing: "0.1em" }}>{featured.tag}</span>
-                    <span>·</span>
-                    <span>{featured.readTime}</span>
+                    {featured.tag && <span style={{ color: "var(--accent)", fontSize: 11, letterSpacing: "0.1em" }}>{featured.tag}</span>}
+                    {featured.tag && featured.readTime && <span>·</span>}
+                    {featured.readTime && <span>{featured.readTime}</span>}
                     <span>·</span>
                     <span style={{ color: "var(--accent2)" }}>Read on Medium →</span>
                   </div>
@@ -2126,8 +2136,8 @@ function WritingSection() {
                   <div className="writing-title" style={{ fontSize: "1rem", marginBottom: 10 }}>{w.title}</div>
                   <div className="writing-excerpt" style={{ fontSize: 13, marginBottom: 20, flex: 1 }}>{w.excerpt}</div>
                   <div className="writing-meta" style={{ marginTop: "auto" }}>
-                    <span>{w.readTime}</span>
-                    <span>·</span>
+                    {w.readTime && <span>{w.readTime}</span>}
+                    {w.readTime && <span>·</span>}
                     <span style={{ color: "var(--accent2)" }}>Read →</span>
                   </div>
                 </div>
@@ -2186,6 +2196,7 @@ function PhotoGallery() {
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: "top center",
               opacity: active === i ? 1 : 0,
               transition: "opacity 0.8s ease",
             }}
@@ -2244,28 +2255,27 @@ function PhotoGallery() {
 
 function NowSection() {
   return (
-    <section id="now" style={{ background: "var(--bg2)", maxWidth: "100%", overflowX: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <section id="now" style={{ background: "var(--bg2)", maxWidth: "100%", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "100px 24px", boxSizing: "border-box", width: "100%" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", overflowX: "hidden", boxSizing: "border-box" }}>
         <Reveal>
           <span className="section-label">Now</span>
           <h2 className="section-title"><span className="squiggle">What I'm Focused On</span></h2>
           <p className="section-desc">Where my head is right now.</p>
         </Reveal>
-        <div className="now-grid" style={{ marginTop: 24 }}>
-          <div>
-            <ul className="now-list">
+        <div className="now-grid" style={{ marginTop: 24, width: "100%", boxSizing: "border-box" }}>
+          <div style={{ minWidth: 0, width: "100%", overflow: "hidden", boxSizing: "border-box" }}>
+            <ul className="now-list" style={{ width: "100%", boxSizing: "border-box" }}>
               {NOW_ITEMS.map((item, i) => (
-                <li key={i} className="now-item">
-                  <span className="now-icon">{item.icon}</span>
-                  <span className="now-text">{item.text}</span>
+                <li key={i} className="now-item" style={{ width: "100%", boxSizing: "border-box", overflow: "hidden" }}>
+                  <span className="now-icon" style={{ flexShrink: 0 }}>{item.icon}</span>
+                  <span className="now-text" style={{ overflow: "hidden", wordBreak: "break-word", minWidth: 0, flex: 1 }}>{item.text}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
+          <div style={{ minWidth: 0, width: "100%", boxSizing: "border-box" }}>
             <Reveal delay={0.2}>
               <span className="section-label">Beyond Product</span>
-
               <div className="beyond-list">
                 {["🏋️ Fitness", "🧘 Wellness", "✈️ Travel", "🎵 Music", "🎧 DJing", "💡 Entrepreneurship", "🎨 Creative Experimentation", "🧠 User Psychology", "👟 Shoe Collector", "🧢 Hat Collector", "⬜ Supreme", "👑 Real Housewives (All Cities)", "🧥 Fashion"].map((t) => (
                   <span key={t} className="beyond-tag">{t}</span>
