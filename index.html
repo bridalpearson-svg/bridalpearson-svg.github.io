@@ -1132,6 +1132,23 @@ const METRICS = [
 
 const NOTEBOOK = [
   {
+    title: "The System Recovered. But Did the Customer?",
+    preview: "We measure how quickly systems recover when something goes wrong. But how often do we measure whether the customer actually recovered?",
+    body: [
+      "We measure how quickly systems recover when something goes wrong. But how often do we measure whether the customer actually recovered?",
+      "Last Sunday, I was on the A train heading into the city. Somewhere around Jay Street, the train stalled. No announcement. No update. Just stillness.",
+      "After about 12 minutes, service resumed. From an operations standpoint, the system recovered quickly. But I missed my connection. I was late. And I had no idea what caused the delay or whether it would happen again.",
+      "That experience got me thinking about how we define recovery in product.",
+      "We track time-to-resolution. We monitor error rates. We celebrate when the system is back up. But the customer's experience of that failure doesn't end when the system does.",
+      "There's a gap between technical recovery and customer recovery. And most products don't close it.",
+      "Closing that gap means proactive communication during the failure, not just after. It means acknowledging the impact, not just fixing the cause. It means giving customers something — information, a path forward, a small gesture — that helps them recover too.",
+      "The best products don't just fix problems. They help customers move past them. That's the standard worth measuring against.",
+    ],
+    tags: ["Product Strategy", "Consumer Behavior"],
+    date: "Oct 2026",
+    mediumUrl: "https://bridalpearson.medium.com/dear-mta-its-not-just-about-the-trains-it-s-about-the-journey-9bae05d6b56c",
+  },
+  {
     title: "Amazon Isn't Killing Rufus. It's Absorbing It.",
     preview: "What struck me about Amazon retiring Rufus wasn't that they're moving on from a chatbot. It was what they probably learned from it.",
     body: [
@@ -1340,6 +1357,14 @@ const MEDIUM_PROFILE_URL = `https://medium.com/@${MEDIUM_USERNAME}`;
 
 // Fallback articles (from profile — used if RSS fetch fails)
 const FALLBACK_WRITING = [
+  {
+    title: "Dear MTA, It's Not Just About the Trains. It's About the Journey.",
+    excerpt: "How a Sunday subway delay got me thinking about customer experience, rider choice, and the future of getting around New York City.",
+    pubDate: "Oct 19, 2026",
+    link: "https://bridalpearson.medium.com/dear-mta-its-not-just-about-the-trains-it-s-about-the-journey-9bae05d6b56c",
+    tag: "Customer Experience",
+    featured: true,
+  },
   {
     title: "Let's Cook 🍳",
     excerpt: "Lately, I've had one phrase on repeat: let's cook! A reflection on momentum, mindset, and what it means to be in motion.",
@@ -1701,15 +1726,22 @@ function NotebookCard({ n, index }) {
           transition: "max-height 0.5s ease",
         }}>
           <div style={{ paddingTop: 4 }}>
-            {n.body.map((para, i) => (
-              <p key={i} style={{
-                fontSize: 14, color: i === 0 ? "var(--text)" : "var(--text2)",
-                lineHeight: 1.85, fontWeight: 300,
-                marginBottom: i < n.body.length - 1 ? 16 : 0,
-              }}>
-                {para}
-              </p>
-            ))}
+            {n.body.map((para, i) => {
+              const isLast = i === n.body.length - 1;
+              return (
+                <p key={i} style={{
+                  fontSize: 14, color: i === 0 ? "var(--text)" : "var(--text2)",
+                  lineHeight: 1.85, fontWeight: 300,
+                  marginBottom: isLast ? 0 : 16,
+                }}>
+                  {isLast && n.mediumUrl ? (
+                    <a href={n.mediumUrl} target="_blank" rel="noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>
+                      {para}
+                    </a>
+                  ) : para}
+                </p>
+              );
+            })}
           </div>
         </div>
 
