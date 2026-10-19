@@ -1248,7 +1248,7 @@ const COMPANIES = [
     role: "Product Leader",
     focus: ["Growth", "Engagement", "Loyalty", "Personalization", "Optimization"],
     description:
-      "Leading loyalty, engagement, and personalization — including a decision engine, content network, and optimization track all built to drive ARPU. I've built teams from scratch, led zero-to-one initiatives, and managed up to seven direct reports.",
+      ["At Western Union, I'm driving digital growth through loyalty, personalization, and targeted optimizations that have closed conversion gaps, accelerated delivery, and generated significant revenue.", "Now, I'm exploring what's next for cross-border payments through WhatsApp."],
   },
   {
     name: "Nomad Health",
@@ -1848,7 +1848,11 @@ function WorkSection() {
                 <div className="company-name">{c.name}</div>
                 <div className="company-role">{c.role}</div>
               </div>
-              <div className="company-desc">{c.description}</div>
+              <div className="company-desc">
+                {Array.isArray(c.description)
+                  ? c.description.map((para, i) => <p key={i} style={{ marginBottom: i < c.description.length - 1 ? 12 : 0 }}>{para}</p>)
+                  : c.description}
+              </div>
               <div className="company-tags">
                 {c.focus.map((f) => <span key={f} className="company-tag">{f}</span>)}
               </div>
