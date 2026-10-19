@@ -951,6 +951,28 @@
   }
 
   </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MGYM54P2B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8MGYM54P2B');
+  </script>
+
+  <!-- Hotjar Tracking -->
+  <script>
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:1122540,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
 </head>
 <body>
   <div id="root"></div>
@@ -1109,23 +1131,6 @@ const METRICS = [
 ];
 
 const NOTEBOOK = [
-  {
-    title: "The System Recovered. But Did the Customer?",
-    preview: "We measure how quickly systems recover when something goes wrong. But how often do we measure whether the customer actually recovered?",
-    body: [
-      "We measure how quickly systems recover when something goes wrong. But how often do we measure whether the customer actually recovered?",
-      "A 20-minute subway delay got me thinking about this. The trains eventually resumed service, and the operational metrics returned to normal. Meanwhile, someone missed an appointment, arrived late to work, or spent another 30 minutes figuring out how to get home.",
-      "So what if we looked beyond how quickly the system recovers? How long did it take customers to receive accurate, actionable information? Could they make an informed decision or find an alternative? How much unexpected time did they lose?",
-      "Those measures tell us something operational recovery alone cannot: whether we're actually helping customers navigate the moments when our products fail them.",
-      "This isn't just about public transportation. Think about a failed payment, a delayed delivery, or a service outage. Restoring functionality is important, but it doesn't automatically resolve the customer's problem.",
-      "Maybe we need to spend as much time measuring the impact of disruptions on customers as we do measuring how quickly we fix them.",
-      "Because getting the system back on track is one thing. Helping the customer get back on track is another.",
-      "This observation inspired a longer reflection on customer experience, rider choice, and the future of public transportation. Read the full story on Medium →",
-    ],
-    tags: ["Product Strategy", "Consumer Behavior"],
-    date: "Oct 2026",
-    mediumUrl: "https://bridalpearson.medium.com/dear-mta-its-not-just-about-the-trains-it-s-about-the-journey-9bae05d6b56c",
-  },
   {
     title: "Amazon Isn't Killing Rufus. It's Absorbing It.",
     preview: "What struck me about Amazon retiring Rufus wasn't that they're moving on from a chatbot. It was what they probably learned from it.",
@@ -1336,20 +1341,12 @@ const MEDIUM_PROFILE_URL = `https://medium.com/@${MEDIUM_USERNAME}`;
 // Fallback articles (from profile — used if RSS fetch fails)
 const FALLBACK_WRITING = [
   {
-    title: "Dear MTA, It's Not Just About the Trains. It's About the Journey.",
-    excerpt: "How a Sunday subway delay got me thinking about customer experience, rider choice, and the future of getting around New York City.",
-    pubDate: "Oct 19, 2026",
-    link: "https://bridalpearson.medium.com/dear-mta-its-not-just-about-the-trains-it-s-about-the-journey-9bae05d6b56c",
-    tag: "Customer Experience",
-    featured: true,
-  },
-  {
     title: "Let's Cook 🍳",
     excerpt: "Lately, I've had one phrase on repeat: let's cook! A reflection on momentum, mindset, and what it means to be in motion.",
     pubDate: "Mar 25, 2025",
-    link: "https://bridalpearson.medium.com/lets-cook-6b1c66906cd3",
+    link: MEDIUM_PROFILE_URL,
     tag: "Mindset",
-    featured: false,
+    featured: true,
   },
   {
     title: "What's the Tea? Storytelling!",
@@ -1704,22 +1701,15 @@ function NotebookCard({ n, index }) {
           transition: "max-height 0.5s ease",
         }}>
           <div style={{ paddingTop: 4 }}>
-            {n.body.map((para, i) => {
-              const isLast = i === n.body.length - 1;
-              return (
-                <p key={i} style={{
-                  fontSize: 14, color: i === 0 ? "var(--text)" : "var(--text2)",
-                  lineHeight: 1.85, fontWeight: 300,
-                  marginBottom: isLast ? 0 : 16,
-                }}>
-                  {isLast && n.mediumUrl ? (
-                    <a href={n.mediumUrl} target="_blank" rel="noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>
-                      {para}
-                    </a>
-                  ) : para}
-                </p>
-              );
-            })}
+            {n.body.map((para, i) => (
+              <p key={i} style={{
+                fontSize: 14, color: i === 0 ? "var(--text)" : "var(--text2)",
+                lineHeight: 1.85, fontWeight: 300,
+                marginBottom: i < n.body.length - 1 ? 16 : 0,
+              }}>
+                {para}
+              </p>
+            ))}
           </div>
         </div>
 
