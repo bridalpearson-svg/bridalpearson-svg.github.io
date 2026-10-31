@@ -2401,17 +2401,15 @@ function NowSection() {
     <section id="now" style={{ background: "var(--bg2)", maxWidth: "100%", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "100px 24px", boxSizing: "border-box", width: "100%" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", overflowX: "hidden", boxSizing: "border-box" }}>
 
-        {/* Section header */}
-        <Reveal>
-          <span className="section-label">Now</span>
-          <h2 className="section-title"><span className="squiggle">Beyond Product</span></h2>
-          <p className="section-desc">Where my head is outside of work.</p>
-        </Reveal>
-
-        {/* What I'm up to list + photos side by side */}
-        <div className="now-grid" style={{ marginTop: 40, width: "100%", boxSizing: "border-box", alignItems: "start" }}>
+        {/* Two-column layout: left = heading + list, right = photo gallery */}
+        <div className="now-grid" style={{ marginTop: 0, width: "100%", boxSizing: "border-box", alignItems: "start" }}>
           <div style={{ minWidth: 0, width: "100%", overflow: "hidden", boxSizing: "border-box" }}>
-            <ul className="now-list" style={{ width: "100%", boxSizing: "border-box" }}>
+            <Reveal>
+              <span className="section-label">Now</span>
+              <h2 className="section-title"><span className="squiggle">Beyond Product</span></h2>
+              <p className="section-desc">Where my head is outside of work.</p>
+            </Reveal>
+            <ul className="now-list" style={{ width: "100%", boxSizing: "border-box", marginTop: 16 }}>
               {NOW_ITEMS.map((item, i) => (
                 <li key={i} className="now-item" style={{ width: "100%", boxSizing: "border-box", overflow: "hidden" }}>
                   <span className="now-icon" style={{ flexShrink: 0 }}>{item.icon}</span>
@@ -2421,7 +2419,7 @@ function NowSection() {
             </ul>
           </div>
           <div style={{ minWidth: 0, width: "100%", boxSizing: "border-box" }}>
-            <Reveal delay={0.2}>
+            <Reveal delay={0.15}>
               <PhotoGallery />
             </Reveal>
           </div>
