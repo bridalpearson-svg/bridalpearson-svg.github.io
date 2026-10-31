@@ -1523,24 +1523,12 @@ function Hero() {
           I help people discover value.
         </p>
 
-        <p
-          className="hero-body"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(16px)",
-            transition: "all 0.9s ease 0.75s",
-          }}
-        >
-          Across marketplaces, search and discovery, loyalty, engagement, personalization, and growth —
-          I've spent my career creating experiences that connect customer needs with measurable business outcomes.
-        </p>
-
         <div
           className="hero-btns"
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0)" : "translateY(16px)",
-            transition: "all 0.9s ease 0.9s",
+            transition: "all 0.9s ease 0.75s",
           }}
         >
           <button className="btn-primary" onClick={() => { const t0 = document.querySelector("#about"); if(t0) window.scrollTo({top: t0.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>About Me</button>
@@ -1550,6 +1538,18 @@ function Hero() {
           <button className="btn-ghost" onClick={() => { const t4 = document.querySelector("#writing"); if(t4) window.scrollTo({top: t4.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>Read My Writing</button>
           <button className="btn-ghost" onClick={() => { const t6 = document.querySelector("#now"); if(t6) window.scrollTo({top: t6.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>What I'm Up To</button>
         </div>
+
+        <p
+          className="hero-body"
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0)" : "translateY(16px)",
+            transition: "all 0.9s ease 0.9s",
+          }}
+        >
+          Across marketplaces, search and discovery, loyalty, engagement, personalization, and growth —
+          I've spent my career creating experiences that connect customer needs with measurable business outcomes.
+        </p>
       </div>
 
       <div
@@ -1597,27 +1597,18 @@ function AboutSection() {
         <h2 className="section-title"><span className="squiggle">A little about me.</span></h2>
       </Reveal>
       <Reveal delay={0.05}>
-        <div style={{ marginTop: 32, maxWidth: 680, display: "flex", flexDirection: "column", gap: 22 }}>
+        <div style={{ marginTop: 32, maxWidth: 860, display: "flex", flexDirection: "column", gap: 22 }}>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            I'm Bridal. Like the wedding. That's how I introduce myself, because just saying "Bridal" usually gets me a "Wait, what did you say?" Yes, that's my name.
+            I'm Bridal. Like the wedding. Yes, that's my name—it usually gets a "Wait, what did you say?"
           </p>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            I'm often the person saying, "Wait, I have an idea." A conversation gets me thinking, one question leads to another, and suddenly there's something I want to explore, write about, or build. I like figuring things out—and making something out of them.
+            I'm often the person saying, "Wait, I have an idea." Conversations spark my curiosity, and I like turning that curiosity into something I can build.
           </p>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            I love putting a look together, and taking care of myself is a priority—whether that's lifting weights, yoga, or Pilates. I'm learning how to DJ, always thinking about my next trip ({" "}
-            <a
-              href="javascript:void(0)"
-              onClick={() => { const t = document.querySelector("#travel"); if(t) window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}
-              style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid rgba(124,159,255,0.4)" }}
-            >check out the travel section below</a>
-            {" "}), and never short on opinions about anything on Bravo. Especially the Real Housewives.
+            I love putting a look together, lifting weights, yoga, and Pilates. I'm learning to DJ, thinking about my next trip, and never short on opinions about Bravo. Especially the Real Housewives.
           </p>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            I could go on—and probably will—but you'll get to know more about me as you explore. This site brings together a little of who I am, what I build, what I'm figuring out, and the things I can't stop thinking about.
-          </p>
-          <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            Take a look around.
+            Take a look around. You'll find what I'm building, what I'm figuring out, and a little more of me along the way.
           </p>
         </div>
       </Reveal>
@@ -1962,7 +1953,7 @@ function WorkSection() {
       <Reveal delay={0.2}>
         <div style={{ marginTop: 80 }}>
           <span className="section-label">Selected Work</span>
-          <h2 className="section-title" style={{ marginTop: 8 }}>Product Stories</h2>
+          <h2 className="section-title" style={{ marginTop: 8 }}><span className="squiggle">Product Stories</span></h2>
           <p className="section-desc">Problems, decisions, and what actually happened.</p>
         </div>
       </Reveal>
@@ -2044,7 +2035,7 @@ function ExperimentsSection() {
     <section id="experiments">
       <Reveal>
         <span className="section-label">What I'm Building</span>
-        <h2 className="section-title">Beyond the Day Job</h2>
+        <h2 className="section-title"><span className="squiggle">Beyond the Day Job</span></h2>
         <p className="section-desc">Things I'm actively building and exploring.</p>
       </Reveal>
       <div className="experiments-grid">
@@ -2133,7 +2124,7 @@ function WritingSection() {
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
           <div>
             <span className="section-label">Blog</span>
-            <h2 className="section-title">Blog</h2>
+            <h2 className="section-title"><span className="squiggle">Blog</span></h2>
             <p className="section-desc">
               Longer-form thinking on product, leadership, AI, and whatever I can't stop turning over in my head.
               {liveLoaded && (
@@ -2397,7 +2388,7 @@ function ConnectSection() {
     <section id="connect" className="connect-section">
       <Reveal>
         <span className="section-label">Connect</span>
-        <h2 className="section-title">Let's Talk</h2>
+        <h2 className="section-title"><span className="squiggle">Let's Talk</span></h2>
         <p className="section-desc" style={{ margin: "0 auto" }}>
           I’m always interested in conversations about product, customer behavior, marketplaces, AI, entrepreneurship, and the ideas people can’t stop thinking about. If something on this site resonated — or if you’re working on something interesting — I’d love to hear from you. There’s always something on my side too.
         </p>
