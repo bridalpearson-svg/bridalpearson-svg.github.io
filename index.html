@@ -844,12 +844,17 @@
     }
   }
 
-  .beyond-list {
+  .beyond-scroll-row {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 10px;
-    margin-top: 24px;
+    margin-top: 32px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .beyond-scroll-row::-webkit-scrollbar { display: none; }
   .beyond-tag {
     padding: 10px 20px;
     border: 1px solid var(--border);
@@ -858,6 +863,8 @@
     color: var(--text2);
     transition: all 0.2s;
     cursor: default;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .beyond-tag:hover {
     border-color: var(--accent);
@@ -1062,7 +1069,7 @@ const NAV_LINKS = [
   { label: "Explore My Work", href: "#work" },
   { label: "What I'm Building", href: "#experiments" },
   { label: "Read My Writing", href: "#writing" },
-  { label: "What I'm Up To", href: "#now" },
+  { label: "Beyond Product", href: "#now" },
 ];
 
 const PROCESS = [
@@ -1557,7 +1564,7 @@ function Hero() {
           <button className="btn-ghost" onClick={() => { const t3 = document.querySelector("#work"); if(t3) window.scrollTo({top: t3.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>Explore My Work</button>
           <button className="btn-ghost" onClick={() => { const t5 = document.querySelector("#experiments"); if(t5) window.scrollTo({top: t5.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>What I'm Building</button>
           <button className="btn-ghost" onClick={() => { const t4 = document.querySelector("#writing"); if(t4) window.scrollTo({top: t4.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>Read My Writing</button>
-          <button className="btn-ghost" onClick={() => { const t6 = document.querySelector("#now"); if(t6) window.scrollTo({top: t6.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>What I'm Up To</button>
+          <button className="btn-ghost" onClick={() => { const t6 = document.querySelector("#now"); if(t6) window.scrollTo({top: t6.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>Beyond Product</button>
         </div>
 
       </div>
@@ -2393,12 +2400,16 @@ function NowSection() {
   return (
     <section id="now" style={{ background: "var(--bg2)", maxWidth: "100%", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "100px 24px", boxSizing: "border-box", width: "100%" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", overflowX: "hidden", boxSizing: "border-box" }}>
+
+        {/* Section header */}
         <Reveal>
           <span className="section-label">Now</span>
-          <h2 className="section-title"><span className="squiggle">What I'm Up To</span></h2>
-          <p className="section-desc">Where my head is right now.</p>
+          <h2 className="section-title"><span className="squiggle">Beyond Product</span></h2>
+          <p className="section-desc">Where my head is outside of work.</p>
         </Reveal>
-        <div className="now-grid" style={{ marginTop: 24, width: "100%", boxSizing: "border-box" }}>
+
+        {/* What I'm up to list + photos side by side */}
+        <div className="now-grid" style={{ marginTop: 40, width: "100%", boxSizing: "border-box" }}>
           <div style={{ minWidth: 0, width: "100%", overflow: "hidden", boxSizing: "border-box" }}>
             <ul className="now-list" style={{ width: "100%", boxSizing: "border-box" }}>
               {NOW_ITEMS.map((item, i) => (
@@ -2411,13 +2422,19 @@ function NowSection() {
           </div>
           <div style={{ minWidth: 0, width: "100%", boxSizing: "border-box" }}>
             <Reveal delay={0.2}>
-              <span className="section-label">Beyond Product</span>
-              <div className="beyond-list">
-                {["🏋️ Fitness", "🧘 Wellness", "✈️ Travel", "🎵 Music", "🎧 DJing", "💡 Entrepreneurship", "🎨 Creative Experimentation", "🧠 User Psychology", "👟 Shoe Collector", "🧢 Hat Collector", "⬜ Supreme", "👑 Real Housewives (All Cities)", "🧥 Fashion"].map((t) => (
-                  <span key={t} className="beyond-tag">{t}</span>
-                ))}
-              </div>
               <PhotoGallery />
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Beyond Product tags — horizontal scrolling row */}
+        <Reveal delay={0.1}>
+          <div className="beyond-scroll-row">
+            {["🏋️ Fitness", "🧘 Wellness", "✈️ Travel", "🎵 Music", "🎧 DJing", "💡 Entrepreneurship", "🎨 Creative Experimentation", "🧠 User Psychology", "👟 Shoe Collector", "🧢 Hat Collector", "⬜ Supreme", "👑 Real Housewives (All Cities)", "🧥 Fashion"].map((t) => (
+              <span key={t} className="beyond-tag">{t}</span>
+            ))}
+          </div>
+        </Reveal>
 
         {/* Travel Section */}
         <div style={{ borderTop: "1px solid var(--border)", marginTop: 80, paddingTop: 80 }}>
@@ -2470,9 +2487,7 @@ function NowSection() {
             <DestinationsGrid />
           </Reveal>
         </div>
-            </Reveal>
-          </div>
-        </div>
+
       </div>
     </section>
   );
