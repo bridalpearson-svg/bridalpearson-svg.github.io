@@ -1543,17 +1543,6 @@ function Hero() {
           <button className="btn-ghost" onClick={() => { const t6 = document.querySelector("#now"); if(t6) window.scrollTo({top: t6.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>What I'm Up To</button>
         </div>
 
-        <p
-          className="hero-body"
-          style={{
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(16px)",
-            transition: "all 0.9s ease 0.9s",
-          }}
-        >
-          Across marketplaces, search and discovery, loyalty, engagement, personalization, and growth —
-          I've spent my career creating experiences that connect customer needs with measurable business outcomes.
-        </p>
       </div>
 
       <div
@@ -1881,6 +1870,7 @@ function WorkSection() {
         <span className="section-label">Products I've Helped Grow</span>
         <h2 className="section-title"><span className="squiggle">Where I've Built</span></h2>
         <p className="section-desc">Different products. Different problems. Same approach.</p>
+        <p className="section-desc" style={{ marginTop: 12 }}>Across marketplaces, search and discovery, loyalty, engagement, personalization, and growth — I've spent my career creating experiences that connect customer needs with measurable business outcomes.</p>
       </Reveal>
       <div className="companies-list">
         {COMPANIES.map((c, i) => (
