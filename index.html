@@ -1591,13 +1591,13 @@ function Hero() {
 
 function AboutSection() {
   return (
-    <section id="about" style={{ maxWidth: 720, margin: "0 auto", padding: "100px 24px 80px", boxSizing: "border-box" }}>
+    <section id="about">
       <Reveal>
         <span className="section-label">About Me</span>
-        <h2 className="section-title" style={{ marginBottom: 0 }}>A little about me.</h2>
+        <h2 className="section-title"><span className="squiggle">A little about me.</span></h2>
       </Reveal>
       <Reveal delay={0.05}>
-        <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 22 }}>
+        <div style={{ marginTop: 32, maxWidth: 680, display: "flex", flexDirection: "column", gap: 22 }}>
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
             I'm Bridal. Like the wedding. That's how I introduce myself, because just saying "Bridal" usually gets me a "Wait, what did you say?" Yes, that's my name.
           </p>
@@ -1616,7 +1616,7 @@ function AboutSection() {
           <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
             I could go on—and probably will—but you'll get to know more about me as you explore. This site brings together a little of who I am, what I build, what I'm figuring out, and the things I can't stop thinking about.
           </p>
-          <p style={{ fontSize: 16, color: "var(--text)", lineHeight: 1.9, fontWeight: 400, margin: 0 }}>
+          <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
             Take a look around.
           </p>
         </div>
