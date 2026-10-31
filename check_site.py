@@ -40,7 +40,7 @@ REQUIRED = [
 
     # Key content markers
     ("Travel Section",               "Travel section block"),
-    ("travel-intro-row",             "Travel intro CSS"),
+    ("Exploring the World",          "Travel section heading"),
     ("squiggle",                     "Squiggle underline style"),
     ("FALLBACK_WRITING",             "Writing fallback array reference"),
 

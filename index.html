@@ -2409,7 +2409,7 @@ function NowSection() {
         </Reveal>
 
         {/* What I'm up to list + photos side by side */}
-        <div className="now-grid" style={{ marginTop: 40, width: "100%", boxSizing: "border-box" }}>
+        <div className="now-grid" style={{ marginTop: 40, width: "100%", boxSizing: "border-box", alignItems: "start" }}>
           <div style={{ minWidth: 0, width: "100%", overflow: "hidden", boxSizing: "border-box" }}>
             <ul className="now-list" style={{ width: "100%", boxSizing: "border-box" }}>
               {NOW_ITEMS.map((item, i) => (
@@ -2442,29 +2442,26 @@ function NowSection() {
             <h2 className="section-title" style={{ marginBottom: 0 }}><span className="squiggle">Exploring the World</span></h2>
           </Reveal>
 
-          {/* Intro + Stats */}
+          {/* Intro paragraph */}
           <Reveal delay={0.05}>
-            <div className="travel-intro-row">
-              <div className="travel-intro-text">
-                <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.85, fontWeight: 300, margin: 0 }}>
-                  Travel has always been one of the most meaningful parts of my life. Each year, my family and I make time to explore somewhere new — sometimes in groups of 20, 30, or even 40. What stays with me most isn't just the places themselves, but the shared experiences: discovering new cultures, creating memories together, and seeing the world through a wider lens.
-                </p>
-                <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.85, fontWeight: 300, marginTop: 16, marginBottom: 0 }}>
-                  I'm always planning the next trip — somewhere new, or somewhere I wasn't ready to leave.
-                </p>
-              </div>
-              <div className="travel-stats" style={{ justifyContent: "center" }}>
-                {[
-                  { value: "22", label: "Destinations\nExplored" },
-                  { value: "5",  label: "Continents" },
-                  { value: "1–2", label: "Major Trips\na Year" },
-                ].map((s, i) => (
-                  <div key={s.label} className="stat-item" style={{ paddingRight: 32, marginRight: 32, borderRight: i < 2 ? "1px solid var(--border)" : "none", textAlign: "center" }}>
-                    <div style={{ fontSize: 36, fontFamily: "var(--serif)", color: "var(--text)", fontWeight: 400, lineHeight: 1, whiteSpace: "nowrap" }}>{s.value}</div>
-                    <div style={{ fontSize: 10, color: "var(--text2)", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 8, lineHeight: 1.5, whiteSpace: "pre-line" }}>{s.label}</div>
-                  </div>
-                ))}
-              </div>
+            <p style={{ color: "var(--text2)", fontSize: 15, lineHeight: 1.85, fontWeight: 300, margin: "20px 0 0", maxWidth: 760 }}>
+              Travel has always been one of the most meaningful parts of my life. Each year, my family and I make time to explore somewhere new — sometimes in groups of 20, 30, or even 40. What stays with me most isn't just the places themselves, but the shared experiences: discovering new cultures, creating memories together, and seeing the world through a wider lens. I'm always planning the next trip — somewhere new, or somewhere I wasn't ready to leave.
+            </p>
+          </Reveal>
+
+          {/* Stats — horizontal row */}
+          <Reveal delay={0.08}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 0, marginTop: 36 }}>
+              {[
+                { value: "22", label: "Destinations\nExplored" },
+                { value: "5",  label: "Continents" },
+                { value: "1–2", label: "Major Trips\na Year" },
+              ].map((s, i) => (
+                <div key={s.label} style={{ paddingRight: 40, marginRight: 40, borderRight: i < 2 ? "1px solid var(--border)" : "none", textAlign: "left" }}>
+                  <div style={{ fontSize: 36, fontFamily: "var(--serif)", color: "var(--text)", fontWeight: 400, lineHeight: 1, whiteSpace: "nowrap" }}>{s.value}</div>
+                  <div style={{ fontSize: 10, color: "var(--text2)", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 8, lineHeight: 1.5, whiteSpace: "pre-line" }}>{s.label}</div>
+                </div>
+              ))}
             </div>
           </Reveal>
 
