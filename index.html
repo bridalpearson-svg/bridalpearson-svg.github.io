@@ -1771,7 +1771,7 @@ function NotebookCard({ n, index }) {
 
         {/* Full body — expands in */}
         <div style={{
-          maxHeight: expanded ? 1000 : 0,
+          maxHeight: expanded ? 4000 : 0,
           overflow: "hidden",
           transition: "max-height 0.5s ease",
         }}>
@@ -1780,7 +1780,7 @@ function NotebookCard({ n, index }) {
               const isLast = i === n.body.length - 1;
               return (
                 <p key={i} style={{
-                  fontSize: 14, color: i === 0 ? "var(--text)" : "var(--text2)",
+                  fontSize: 14, color: i === 0 ? "var(--text)" : isLast ? "var(--accent)" : "var(--text2)",
                   lineHeight: 1.85, fontWeight: 300,
                   marginBottom: isLast ? 0 : 16,
                 }}>
