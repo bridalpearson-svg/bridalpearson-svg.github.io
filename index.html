@@ -1055,12 +1055,12 @@ function Reveal({ children, delay = 0, className = "" }) {
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
-  { label: "My Approach", href: "#think" },
-  { label: "Impact", href: "#work" },
-  { label: "Notes", href: "#notebook" },
-  { label: "Building", href: "#experiments" },
-  { label: "Blog", href: "#writing" },
-  { label: "Now", href: "#now" },
+  { label: "About Me", href: "#about" },
+  { label: "How I Think", href: "#think" },
+  { label: "Explore My Work", href: "#work" },
+  { label: "What I'm Building", href: "#experiments" },
+  { label: "Read My Writing", href: "#writing" },
+  { label: "What I'm Up To", href: "#now" },
 ];
 
 const PROCESS = [
@@ -1543,9 +1543,12 @@ function Hero() {
             transition: "all 0.9s ease 0.9s",
           }}
         >
-          <button className="btn-primary" onClick={() => { const t2 = document.querySelector("#think"); if(t2) window.scrollTo({top: t2.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>How I Think</button>
+          <button className="btn-primary" onClick={() => { const t0 = document.querySelector("#about"); if(t0) window.scrollTo({top: t0.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>About Me</button>
+          <button className="btn-ghost" onClick={() => { const t2 = document.querySelector("#think"); if(t2) window.scrollTo({top: t2.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>How I Think</button>
           <button className="btn-ghost" onClick={() => { const t3 = document.querySelector("#work"); if(t3) window.scrollTo({top: t3.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>Explore My Work</button>
+          <button className="btn-ghost" onClick={() => { const t5 = document.querySelector("#experiments"); if(t5) window.scrollTo({top: t5.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>What I'm Building</button>
           <button className="btn-ghost" onClick={() => { const t4 = document.querySelector("#writing"); if(t4) window.scrollTo({top: t4.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>Read My Writing</button>
+          <button className="btn-ghost" onClick={() => { const t6 = document.querySelector("#now"); if(t6) window.scrollTo({top: t6.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}>What I'm Up To</button>
         </div>
       </div>
 
@@ -1582,6 +1585,43 @@ function Hero() {
         <span>Scroll</span>
       </div>
     </div>
+  );
+}
+
+
+function AboutSection() {
+  return (
+    <section id="about" style={{ maxWidth: 720, margin: "0 auto", padding: "100px 24px 80px", boxSizing: "border-box" }}>
+      <Reveal>
+        <span className="section-label">About Me</span>
+        <h2 className="section-title" style={{ marginBottom: 0 }}>A little about me.</h2>
+      </Reveal>
+      <Reveal delay={0.05}>
+        <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 22 }}>
+          <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
+            I'm Bridal. Like the wedding. That's how I introduce myself, because just saying "Bridal" usually gets me a "Wait, what did you say?" Yes, that's my name.
+          </p>
+          <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
+            I'm often the person saying, "Wait, I have an idea." A conversation gets me thinking, one question leads to another, and suddenly there's something I want to explore, write about, or build. I like figuring things out—and making something out of them.
+          </p>
+          <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
+            I love putting a look together, and taking care of myself is a priority—whether that's lifting weights, yoga, or Pilates. I'm learning how to DJ, always thinking about my next trip ({" "}
+            <a
+              href="javascript:void(0)"
+              onClick={() => { const t = document.querySelector("#travel"); if(t) window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 80, behavior:"smooth"}); }}
+              style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid rgba(124,159,255,0.4)" }}
+            >check out the travel section below</a>
+            {" "}), and never short on opinions about anything on Bravo. Especially the Real Housewives.
+          </p>
+          <p style={{ fontSize: 16, color: "var(--text2)", lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
+            I could go on—and probably will—but you'll get to know more about me as you explore. This site brings together a little of who I am, what I build, what I'm figuring out, and the things I can't stop thinking about.
+          </p>
+          <p style={{ fontSize: 16, color: "var(--text)", lineHeight: 1.9, fontWeight: 400, margin: 0 }}>
+            Take a look around.
+          </p>
+        </div>
+      </Reveal>
+    </section>
   );
 }
 
@@ -1635,7 +1675,7 @@ function ThinkSection() {
     <section id="think">
       <Reveal>
         <span className="section-label">My Approach</span>
-        <h2 className="section-title"><span className="squiggle">What Keeps Showing Up</span></h2>
+        <h2 className="section-title"><span className="squiggle">How I Think</span></h2>
         <div style={{ maxWidth: 620, marginTop: 20 }}>
           <p style={{ fontSize: 15, color: "var(--text2)", lineHeight: 1.85, fontWeight: 300 }}>
             I believe everything starts with the customer — what problem are we solving, and what do they actually need? It’s a simple starting point, but one I’ve found useful across very different products, teams, and challenges.
@@ -2004,7 +2044,7 @@ function ExperimentsSection() {
     <section id="experiments">
       <Reveal>
         <span className="section-label">What I'm Building</span>
-        <h2 className="section-title">Experiments</h2>
+        <h2 className="section-title">Beyond the Day Job</h2>
         <p className="section-desc">Things I'm actively building and exploring.</p>
       </Reveal>
       <div className="experiments-grid">
@@ -2321,7 +2361,7 @@ function NowSection() {
       <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", overflowX: "hidden", boxSizing: "border-box" }}>
         <Reveal>
           <span className="section-label">Now</span>
-          <h2 className="section-title"><span className="squiggle">What I'm Focused On</span></h2>
+          <h2 className="section-title"><span className="squiggle">What I'm Up To</span></h2>
           <p className="section-desc">Where my head is right now.</p>
         </Reveal>
         <div className="now-grid" style={{ marginTop: 24, width: "100%", boxSizing: "border-box" }}>
@@ -2408,6 +2448,7 @@ function App() {
 
       <Nav scrolled={scrolled} />
       <Hero />
+      <AboutSection />
       <div className="divider" />
       <ThinkSection />
       <div className="divider" />
