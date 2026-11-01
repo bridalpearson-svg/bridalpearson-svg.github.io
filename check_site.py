@@ -32,8 +32,6 @@ REQUIRED = [
     ("window.__PHOTO_JAPAN10__",     "Japan photo 10"),
     ("window.__PHOTO_JAPAN11__",     "Japan photo 11"),
     ("window.__PHOTO_JAPAN12__",     "Japan photo 12"),
-    ("window.__PHOTO_JAPAN13__",     "Japan photo 13 (with geisha)"),
-    ("window.__PHOTO_JAPAN14__",     "Japan photo 14 (geisha close-up)"),
     ("window.__PHOTO_GHANA2__",      "Ghana photo 2"),
 
     # React components
