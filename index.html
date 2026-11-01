@@ -1066,8 +1066,8 @@ function Reveal({ children, delay = 0, className = "" }) {
       className={className}
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(32px)",
-        transition: `opacity 0.45s ease ${delay}s, transform 0.45s ease ${delay}s`,
+        transform: inView ? "translateY(0)" : "translateY(16px)",
+        transition: `opacity 0.3s ease ${delay}s, transform 0.3s ease ${delay}s`,
         minWidth: 0,
         boxSizing: "border-box",
         width: "100%",
@@ -1522,7 +1522,7 @@ function Nav({ scrolled }) {
 function Hero() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 100);
+    const t = setTimeout(() => setMounted(true), 50);
     return () => clearTimeout(t);
   }, []);
 
@@ -1708,7 +1708,7 @@ function ThinkSection() {
       </Reveal>
       <div className="process-grid">
         {PROCESS.map((p, i) => (
-          <Reveal key={p.step} delay={i * 0.07}>
+          <Reveal key={p.step} delay={i * 0.03}>
             <FlipCard step={p.step} desc={p.desc} num={i + 1} />
           </Reveal>
         ))}
@@ -1727,7 +1727,7 @@ function MetricsSection() {
         </Reveal>
         <div className="metrics-grid">
           {METRICS.map((m, i) => (
-            <Reveal key={m.label} delay={i * 0.07}>
+            <Reveal key={m.label} delay={i * 0.03}>
               <div className="metric-card">
                 <div className="metric-value">{m.value}</div>
                 <div className="metric-label">{m.label}</div>
@@ -1914,7 +1914,7 @@ function WorkSection() {
       </Reveal>
       <div className="companies-list">
         {COMPANIES.map((c, i) => (
-          <Reveal key={c.name} delay={i * 0.1}>
+          <Reveal key={c.name} delay={i * 0.04}>
             <div className="company-row">
               <div>
                 <div className="company-name">{c.name}</div>
@@ -2003,7 +2003,7 @@ function CasesWithToggle() {
     <>
       <div className="cases-grid">
         {visible.map((c, i) => (
-          <Reveal key={c.title} delay={i * 0.1}>
+          <Reveal key={c.title} delay={i * 0.04}>
             <div className="case-card">
               <div className="case-title">{c.title}</div>
               {c.images && (
@@ -2236,7 +2236,7 @@ function WritingSection() {
       {rest.length > 0 && (
         <div className="writing-grid">
           {rest.map((w, i) => (
-            <Reveal key={w.title + i} delay={i * 0.07}>
+            <Reveal key={w.title + i} delay={i * 0.03}>
               <a
                 href={w.link}
                 target="_blank"
