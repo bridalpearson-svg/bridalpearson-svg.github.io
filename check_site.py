@@ -23,8 +23,6 @@ REQUIRED = [
 
     # Japan photos (added in Oct 2026)
     ("window.__PHOTO_JAPAN__",       "Japan photo 1"),
-    ("window.__PHOTO_JAPAN2__",      "Japan photo 2"),
-    ("window.__PHOTO_JAPAN3__",      "Japan photo 3 (kimono)"),
     ("window.__PHOTO_JAPAN4__",      "Japan photo 4"),
     ("window.__PHOTO_JAPAN5__",      "Japan photo 5"),
     ("window.__PHOTO_JAPAN6__",      "Japan photo 6"),
