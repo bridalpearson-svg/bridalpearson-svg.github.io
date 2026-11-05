@@ -1,0 +1,376 @@
+/**
+ * NextMove — Design Tokens
+ * Extracted from bridalpearson.com (bridalpearson.github.io/index.html)
+ * Use this file as the single source of truth for the NextMove design system.
+ *
+ * Import into your root CSS file:
+ *   @import './nextmove-tokens.css';
+ *
+ * Or paste the :root block into your global stylesheet / Tailwind base layer.
+ */
+
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+/* Paste into your <head> before any stylesheets:
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+*/
+
+:root {
+  /* ── Backgrounds ─────────────────────────────────────────────────────────── */
+  --bg:  #080a0f;     /* Page / deepest surface */
+  --bg2: #0d1117;     /* Card / panel / sidebar surface */
+  --bg3: #111520;     /* Hover state / elevated surface / modal */
+
+  /* ── Borders ─────────────────────────────────────────────────────────────── */
+  --border:        rgba(255, 255, 255, 0.07);   /* Default border */
+  --border-bright: rgba(255, 255, 255, 0.14);   /* Hover / active border */
+
+  /* ── Text ────────────────────────────────────────────────────────────────── */
+  --text:  #e8eaf0;   /* Primary — near-white, cool cast */
+  --text2: #8890a4;   /* Secondary — mid grey-blue */
+  --text3: #555d72;   /* Muted — labels, meta, timestamps */
+
+  /* ── Accent palette ──────────────────────────────────────────────────────── */
+  --accent:  #7c9fff;   /* Cornflower blue — primary interactive color */
+  --accent2: #a78bfa;   /* Soft violet — secondary / italic / gradient end */
+  --gold:    #c9a96e;   /* Gold — "featured" / "pinned" labels only */
+  --glow:    rgba(124, 159, 255, 0.15);   /* Accent glow for box-shadow */
+
+  /* ── Semantic (dashboard additions — not on bridalpearson.com) ───────────── */
+  --success: rgba(74,  222, 128, 0.85);   /* #4ade80 muted — status only */
+  --warning: rgba(251, 191,  36, 0.85);   /* #fbbf24 muted — status only */
+  --danger:  rgba(248, 113, 113, 0.85);   /* #f87171 muted — destructive only */
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+
+  /* ── Radius ──────────────────────────────────────────────────────────────── */
+  --radius-sm:  8px;    /* Input fields, small elements */
+  --radius-md:  12px;   /* Standard cards */
+  --radius-lg:  16px;   /* Large cards, list containers */
+  --radius-pill: 40px;  /* Buttons, nav CTA */
+  --radius-tag:  20px;  /* Tags, badges */
+
+  /* ── Spacing scale ───────────────────────────────────────────────────────── */
+  --space-xs:  6px;
+  --space-sm:  12px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 80px;
+  --space-5xl: 100px;
+  --space-6xl: 120px;
+
+  /* ── Transitions ─────────────────────────────────────────────────────────── */
+  --transition-fast: all 0.2s ease;
+  --transition-md:   all 0.3s ease;
+  --transition-slow: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Shadows ─────────────────────────────────────────────────────────────── */
+  --shadow-button: 0 8px 30px rgba(124, 159, 255, 0.3);
+  --shadow-card:   0 16px 40px rgba(0, 0, 0, 0.3);
+  --shadow-card-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --shadow-accent: 0 20px 40px rgba(124, 159, 255, 0.08);
+
+  /* ── Layout ──────────────────────────────────────────────────────────────── */
+  --max-width: 1200px;
+  --nav-height: 60px;
+}
+
+
+/* ─── Base resets (copy to your global CSS) ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+
+/* ─── Utility classes ────────────────────────────────────────────────────────── */
+
+/* Text styles */
+.text-primary   { color: var(--text); }
+.text-secondary { color: var(--text2); }
+.text-muted     { color: var(--text3); }
+.text-accent    { color: var(--accent); }
+.text-accent2   { color: var(--accent2); }
+.text-gold      { color: var(--gold); }
+
+/* Eyebrow / section label */
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: var(--sans);
+  display: block;
+}
+
+/* Display headings */
+.heading-display {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.heading-xl {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.heading-lg {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.heading-md {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.heading-sm {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* Body copy */
+.body-lg { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--text2); }
+.body-md { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--text2); }
+.body-sm { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--text2); }
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 28px;
+  background: var(--accent);
+  color: #080a0f;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.btn-primary:hover {
+  background: #a3baff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-button);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.btn-ghost:hover {
+  border-color: var(--text2);
+  transform: translateY(-1px);
+}
+
+.btn-accent-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 20px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.btn-accent-ghost:hover {
+  background: rgba(124, 159, 255, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 3px 10px;
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-tag);
+  color: var(--text3);
+  letter-spacing: 0.08em;
+  font-family: var(--sans);
+  transition: var(--transition-fast);
+}
+.tag:hover { border-color: var(--accent); color: var(--accent); }
+
+.tag-accent {
+  display: inline-block;
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: var(--radius-tag);
+  background: rgba(124, 159, 255, 0.10);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  font-family: var(--sans);
+}
+
+.tag-gold {
+  display: inline-block;
+  font-size: 10px;
+  padding: 3px 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--sans);
+}
+
+/* Cards */
+.card {
+  padding: var(--space-xl);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-md);
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.card-lg {
+  padding: var(--space-2xl);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-md);
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Squiggle underline */
+.squiggle {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 6px;
+}
+.squiggle::after {
+  content: '';
+  position: absolute;
+  left: -2px; right: -2px; bottom: -2px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'%3E%3Cpath d='M0 7 C20 3 35 9 55 6 C75 3 90 8 110 5 C130 2 148 9 168 6 C182 4 192 7 200 6' fill='none' stroke='%237c9fff' stroke-width='3.5' stroke-linecap='round'/%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Form inputs (dashboard-specific, not on bridalpearson.com) */
+.input {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 10px 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--accent); }
+.input::placeholder { color: var(--text3); }
+
+/* Table rows (dashboard-specific) */
+.table-row {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.table-row:hover { background: var(--bg3); }
+
+
+/* ─── Responsive breakpoints ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hide-mobile { display: none; }
+}
+@media (min-width: 769px) {
+  .hide-desktop { display: none; }
+}
